@@ -2,13 +2,22 @@
 % Please edit documentation in R/tweaked_functions.R
 \name{max_noNA_noInf}
 \alias{max_noNA_noInf}
-\title{Calculate Max ignoring NAs or -Inf}
+\title{No NA -Inf Max
+Returns a max value ignoring NAs while calculating the max and replacing
+-Inf with NA (which occurs if the max is taken from only NA vales while
+setting na.rm = T)}
 \usage{
 max_noNA_noInf(x)
 }
 \arguments{
 \item{x}{}
 }
+\value{
+Either a Number of NA
+}
 \description{
-Calculate Max ignoring NAs or -Inf
+No NA -Inf Max
+Returns a max value ignoring NAs while calculating the max and replacing
+-Inf with NA (which occurs if the max is taken from only NA vales while
+setting na.rm = T)
 }
