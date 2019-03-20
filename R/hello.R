@@ -15,5 +15,5 @@
 
 .onAttach <- function(libname, pkgname) {
   packageStartupMessage("waRRior is up and running")
-  message(crayon::red(getURL("https://gist.githubusercontent.com/joelgsponer/ab38b2122fb45e9aa934/raw/290d64c02ace9893771199bcc023738cebdc4dbe/donQuixote",ssl.verifypeer=FALSE)))
+  message(crayon::red(RCurl::getURL("https://gist.githubusercontent.com/joelgsponer/ab38b2122fb45e9aa934/raw/290d64c02ace9893771199bcc023738cebdc4dbe/donQuixote",ssl.verifypeer=FALSE)))
 }
