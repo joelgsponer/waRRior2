@@ -2,13 +2,30 @@
 % Please edit documentation in R/tma.R
 \name{tidy_missing_values}
 \alias{tidy_missing_values}
-\title{tidy missing values}
+\title{tidy missing values
+Replaces all specified missing values (e.g. "n.a", "x") with proper NA
+in the specified columns}
 \usage{
-tidy_missing_values(tbl, values, colums)
+tidy_missing_values(tbl, values, columns)
 }
 \arguments{
-\item{colums}{}
+\item{tbl}{The table to be cleaned}
+
+\item{values}{Values to be replaces (e.g. "n.a", "x")}
+
+\item{columns}{The columns to be cleaned}
+}
+\value{
+The cleaned table
 }
 \description{
 tidy missing values
+Replaces all specified missing values (e.g. "n.a", "x") with proper NA
+in the specified columns
+}
+\examples{
+fruits <- c("Pear", "Apple", "n.a", "X")
+veggies <- c("Cauliflower", "X", "Cauliflower", "n.a")
+d <- data.frame(veggies,fruits)
+d <- waRRior::tidy_missing_values(d, c("n.a", "X"), c("veggies", "fruits"))
 }

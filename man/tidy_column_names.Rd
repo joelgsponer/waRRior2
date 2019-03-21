@@ -7,8 +7,21 @@
 tidy_column_names(tbl, pattern = "[-() /:]", replacement = "_")
 }
 \arguments{
-\item{replacement}{}
+\item{tbl}{Table where collumn names should be tidied}
+
+\item{pattern}{What charcters should be removed}
+
+\item{replacement}{Repclament character}
+}
+\value{
+The cleaned table
 }
 \description{
 Tidy column names
+}
+\examples{
+fruits <- c("Pear", "Apple", "n.a", "X")
+veggies <- c("Cauliflower", "X", "Carrot", "n.a")
+d <- data.frame(veggies,fruits)
+d <- waRRior::tidy_missing_values(d, c("n.a", "X"), c("veggies", "fruits"))
 }

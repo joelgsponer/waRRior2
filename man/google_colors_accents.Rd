@@ -7,8 +7,19 @@
 google_colors_accents(level = 4, shuffle = F, show = F)
 }
 \arguments{
-\item{show}{}
+\item{level}{Choose the level of saturation 1-4}
+
+\item{shuffle}{shuffle the colors takes T or F}
+
+\item{show}{show plot of the colors}
+}
+\value{
+A vector of colors drawn from the google color pallets
 }
 \description{
 Google color accents
+}
+\examples{
+g <- google_colors_accents(level = 1, show = TRUE)
+print(g)
 }

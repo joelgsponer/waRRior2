@@ -5,11 +5,22 @@
 \title{Load Google colors}
 \usage{
 
-  google_colors_load(url = "https://raw.githubusercontent.com/joelgsponer/waRRior/master/google/colors/waRRior.google.colors.json")
+  google_colors_load(url = "https://raw.githubusercontent.com/joelgsponer/waRRior/master/google/colors/waRRior.google.colors.json",
+  verbose = T)
 }
 \arguments{
-\item{url}{}
+\item{url}{the url to the JSON file where the colors are stored}
+
+\item{verbose}{toggle verbose printing.}
+}
+\value{
+Returns a list with the "google" colors
 }
 \description{
 Load Google colors
+}
+\examples{
+g <- google_colors_load()
+print(g$BlueGrey$palette)
+barplot(seq(1,length(g$BlueGrey$palette)), col = g$BlueGrey$palette)
 }

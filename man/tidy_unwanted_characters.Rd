@@ -2,13 +2,27 @@
 % Please edit documentation in R/tma.R
 \name{tidy_unwanted_characters}
 \alias{tidy_unwanted_characters}
-\title{Tidy unwanted characters}
+\title{Tidy unwanted characters in column}
 \usage{
 tidy_unwanted_characters(tbl, value, colums)
 }
 \arguments{
-\item{x}{}
+\item{tbl}{The table to be cleaned}
+
+\item{value}{The character to be removed}
+
+\item{colums}{The columns to be cleaned}
+}
+\value{
+The cleaned table
 }
 \description{
-Tidy unwanted characters
+Tidy unwanted characters in column
+}
+\examples{
+fruits <- c("Pear", "Apple", "n.a", "X")
+veggies <- c("Cauliflower", "X", "Carrot", "n.a")
+d <- data.frame(veggies,fruits)
+colnames(d) <- c("() ", "//-")
+d <- waRRior::tidy_column_names(d)
 }

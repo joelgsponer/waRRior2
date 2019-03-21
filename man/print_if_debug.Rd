@@ -11,12 +11,12 @@ print_if_debug(message, object, debug = F)
 
 \item{object}{The object to be printed to the console}
 
-\item{verbose}{Prints to console only if T}
+\item{debug}{Prints to console only if T}
 }
 \description{
 Prints the message to the console if the debug parameter has
   been set to TRUE.
 }
 \examples{
-print_if_verbose("Hello this is a verbose message", T)
+print_if_verbose("Hello this is a verbose message", TRUE)
 }

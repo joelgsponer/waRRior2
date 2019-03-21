@@ -16,5 +16,5 @@ Prints the message to the console if the verbose parameter has
   been set to TRUE.
 }
 \examples{
-print_if_verbose("Hello this is a verbose message", T)
+print_if_verbose("Hello this is a verbose message", TRUE)
 }

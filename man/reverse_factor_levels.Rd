@@ -7,11 +7,14 @@
 reverse_factor_levels(x)
 }
 \arguments{
-\item{x}{}
+\item{x}{A vector of factors}
 }
 \value{
 vector as a factor
 }
 \description{
 Reverse factor levels
+}
+\examples{
+a <- factor(seq(1,10))
 }

@@ -2,10 +2,15 @@
 % Please edit documentation in R/update.R
 \name{self_update}
 \alias{self_update}
-\title{Self Update from Github}
+\title{Self Update from Github
+Self updates the package}
 \usage{
 self_update()
 }
 \description{
 Self Update from Github
+Self updates the package
+}
+\examples{
+self_update()
 }

@@ -10,7 +10,7 @@ setting na.rm = T)}
 min_noNA_noInf(x)
 }
 \arguments{
-\item{x}{}
+\item{x}{A vector}
 }
 \value{
 Either a Number of NA
@@ -20,4 +20,9 @@ No NA -Inf Min
 Returns a min value ignoring NAs while calculating the min and replacing
 -Inf with NA (which occurs if the min is taken from only NA vales while
 setting na.rm = T)
+}
+\examples{
+min_noNA_noInf(c(1,2))
+min_noNA_noInf(c(NA,1))
+min_noNA_noInf(c(NA,NA))
 }
