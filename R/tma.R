@@ -39,6 +39,7 @@ tidy_column_names <- function(
   , pattern = "[-() /:]"
   , replacement = "_"
 ){
+  colnames(tbl) <- stringr::str_trim(colnames(tbl))
   colnames(tbl) <- stringr::str_replace_all(colnames(tbl), pattern, replacement)
   colnames(tbl) <- stringr::str_replace_all(colnames(tbl), "__", "_")
   return(tbl)

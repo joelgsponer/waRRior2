@@ -16,15 +16,15 @@
 #'  , ts = TRUE, verbose = TRUE)
 snippet_section <- function(title, description, ts, verbose = F, debug = F) {
   start <- paste(title, "[START]")
-  description <- paste("## ",dplyr::if_else(ts, as.character(Sys.time()), ""), description)
+  description <- paste("## ",dplyr::if_else(ts, as.character(Sys.time()), "")," -> ", description)
   end <- paste(title, "[END]")
   start <- waRRior::snippet_full_line_title( input = start
                                          , alignment = 40
                                          , filling = "-")
   end <- waRRior::snippet_full_line_title( input = end
-                                             , alignment = 38
+                                             , alignment = 40
                                              , filling = "-")
-  res <- paste(start,description,"\n\n",end, sep = "\n")
+  res <- paste(start,description,"",end, sep = "\n")
   waRRior::print_if_verbose(paste0("\n",res), verbose = verbose)
   return(res)
 }
@@ -68,4 +68,17 @@ snippet_full_line_title <- function(input,filling,alignment, verbose = F, debug 
     a <- a - 1
   }
   paste0(s, paste0(rep(filling, 80-ll), collapse=""))
+}
+# -----------------------------------------------------------------------------
+#' Add a Timestamp for Documentation
+#'
+#' @param message What to be written
+#'
+#' @return A string with a timestamp for documentation
+#' @export
+#'
+#' @examples
+#' snippet_timestamp("test")
+snippet_timestamp <- function(message) {
+  return(paste0("## ", Sys.time()," -> ",message))
 }
