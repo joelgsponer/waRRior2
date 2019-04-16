@@ -1,5 +1,11 @@
 # Functions to work with projects
 # -----------------------------------------------------------------------------
+#' Run the entire project
+#' @export
+project_run <- function(){
+  source(RUN())
+}
+# -----------------------------------------------------------------------------
 #' Add library to be used in project
 #'
 #' @param lib The library to be added
@@ -9,7 +15,7 @@
 #'
 #' @export
 project_use_library <- function(lib,file = "./src/lib.R", verbose = F, debug = F) {
-  lib <- paste0("library(", lib, ")")
+  lib <- paste0("require(", lib, ")")
   write(lib, file = file, append = TRUE)
 }
 # -----------------------------------------------------------------------------
@@ -20,15 +26,15 @@ project_use_library <- function(lib,file = "./src/lib.R", verbose = F, debug = F
 #' @export
 project_setup_structure <- name <- function(verbose = T, debug = F) {
   waRRior::print_if_verbose("Creating folder [src] for source files", verbose = verbose)
-  dir.create("./src")
+  dir.create(SRC())
   waRRior::print_if_verbose("Creating folder [raw] for raw data", verbose = verbose)
   dir.create("./raw")
   waRRior::print_if_verbose("Creating folder [data] for processed data ready for analysis", verbose = verbose)
-  dir.create("./data")
+  dir.create(DATA())
   waRRior::print_if_verbose("Creating folder [img] for plots", verbose = verbose)
-  dir.create("./img")
+  dir.create(IMG())
   waRRior::print_if_verbose("Creating folder [tbl] for tables", verbose = verbose)
-  dir.create("./tbl")
+  dir.create(TBL())
   waRRior::print_if_verbose("Creating folder [reports] for reports", verbose = verbose)
   dir.create("./reports")
 }
@@ -39,12 +45,13 @@ project_setup_structure <- name <- function(verbose = T, debug = F) {
 #' @param debug Debug printing
 #' @export
 project_setup_files <- name <- function(verbose = F, debug = F) {
-  write("# Libraries", "./src/lib.R")
-  write("# Load libraries", "./src/setup.R")
-  write("\n", "./src/setup.R", append = TRUE)
-  write("# Set seed", "./src/setup.R", append = TRUE)
-  write("set.seed(42)", "./src/setup.R", append = TRUE)
-  write("# Paths", "./src/paths.R", append = TRUE)
+  # Libraries
+  write("# Libraries", LIB())
+  # Setup
+  write("# Load libraries", SETUP())
+  write("\n", SETUP(), append = TRUE)
+  write("# Set seed", SETUP(), append = TRUE)
+  write("set.seed(42)", SETUP(), append = TRUE)
 }
 # -----------------------------------------------------------------------------
 #' Set up a project
@@ -65,13 +72,65 @@ project_create <- name <- function(verbose = F, debug = F) {
 #'
 #' @return
 #' @export
-#'
-#' @examples
 project_add_src <- function(name, verbose = F, debug = F){
-  write(  x = sprintf("scr_%s <- function(verbose = T, debug = F){\n}", name)
+  write(  x = sprintf("src_%s <- function(verbose = T, debug = F){\n}", name)
         , file = sprintf("./src/%s.R", name))
-  write(x = sprintf("source('./src/%s.R')", name), file = "./src/analysis.R")
-  write(x = sprintf("src_%s()", name), file = "./src/analysis.R")
+  write(x = sprintf("source('./src/%s.R')", name), file = RUN(), append = T)
+  write(x = sprintf("src_%s()", name), file = RUN(), append = T)
+}
+# -----------------------------------------------------------------------------
+#' DATA
+#' Wrapper for data path
+#' @param name name of the file
+#' @param verbose Verbose printing
+#' @export
+DATA <- function(name, verbose = T){
+  paste0("./data/", name)
+}
+# -----------------------------------------------------------------------------
+#' IMG
+#' Wrapper for img path
+#' @param name Name of the file
+#' @param verbose Verbose printing (logical)
+#' @export
+IMG <- function(name, verbose = T){
+  paste0("./img/", name)
+}
+# -----------------------------------------------------------------------------
+#' TBL
+#' Wrapper for tbl path
+#' @param name Name of the file
+#' @param verbose Verbose printing (logical)
+#' @export
+TBL <- function(name, verbose = T){
+  paste0("./tbl/", name)
+}
+# -----------------------------------------------------------------------------
+#' SRC
+#' Wrapper for src path
+#' @param name Name of the file
+#' @param verbose Verbose printing (logical)
+#' @export
+SRC <- function(name, verbose = T){
+  paste0("./src/", name)
+}
+# -----------------------------------------------------------------------------
+#' RUN file
+#' @export
+RUN <- function(){
+  "./src/run.R"
+}
+# -----------------------------------------------------------------------------
+#' SETUP file
+#' @export
+SETUP <- function(){
+  "./src/setup.R"
+}
+# -----------------------------------------------------------------------------
+#' LIB file
+#' @export
+LIB <- function(){
+  "./src/lib.R"
 }
 # -----------------------------------------------------------------------------
 
