@@ -26,15 +26,15 @@ project_use_library <- function(lib,file = "./src/lib.R", verbose = F, debug = F
 #' @export
 project_setup_structure <- name <- function(verbose = T, debug = F) {
   waRRior::print_if_verbose("Creating folder [src] for source files", verbose = verbose)
-  dir.create(SRC())
+  dir.create("./src")
   waRRior::print_if_verbose("Creating folder [raw] for raw data", verbose = verbose)
   dir.create("./raw")
   waRRior::print_if_verbose("Creating folder [data] for processed data ready for analysis", verbose = verbose)
-  dir.create(DATA())
+  dir.create("./data")
   waRRior::print_if_verbose("Creating folder [img] for plots", verbose = verbose)
-  dir.create(IMG())
+  dir.create("./img")
   waRRior::print_if_verbose("Creating folder [tbl] for tables", verbose = verbose)
-  dir.create(TBL())
+  dir.create("./tbl")
   waRRior::print_if_verbose("Creating folder [reports] for reports", verbose = verbose)
   dir.create("./reports")
 }
