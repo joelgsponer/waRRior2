@@ -36,11 +36,14 @@ tidy_missing_values <- function(tbl, values, columns){
 #' d <- waRRior::tidy_missing_values(d, c("n.a", "X"), c("veggies", "fruits"))
 tidy_column_names <- function(
   tbl
-  , pattern = "[-() /:]"
+  , pattern = "[-() /:%.?]"
   , replacement = "_"
 ){
   colnames(tbl) <- stringr::str_trim(colnames(tbl))
   colnames(tbl) <- stringr::str_replace_all(colnames(tbl), pattern, replacement)
+  colnames(tbl) <- stringr::str_replace_all(colnames(tbl), "__", "_")
+  colnames(tbl) <- stringr::str_replace_all(colnames(tbl), "_$", "")
+  colnames(tbl) <- stringr::str_replace_all(colnames(tbl), "^_", "")
   colnames(tbl) <- stringr::str_replace_all(colnames(tbl), "__", "_")
   return(tbl)
 }

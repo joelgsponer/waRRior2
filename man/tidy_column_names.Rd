@@ -4,7 +4,7 @@
 \alias{tidy_column_names}
 \title{Tidy column names}
 \usage{
-tidy_column_names(tbl, pattern = "[-() /:]", replacement = "_")
+tidy_column_names(tbl, pattern = "[-() /:\%.?]", replacement = "_")
 }
 \arguments{
 \item{tbl}{Table where collumn names should be tidied}

@@ -13,9 +13,9 @@ test_that("Tidy column names with crooked characters", {
   fruits <- c("Pear", "Apple", "n.a", "X")
   veggies <- c("Cauliflower", "X", "Carrot", "n.a")
   d <- data.frame(veggies,fruits)
-  colnames(d) <- c("() ", "//-")
+  colnames(d) <- c("a() ", "//b-")
   d <- waRRior::tidy_column_names(d)
-  expect_equal(c("__", "__"), colnames(d))
+  expect_equal(c("a", "b"), colnames(d))
 })
 
 test_that("Remove unwanted character in table", {
