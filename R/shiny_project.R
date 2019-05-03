@@ -24,7 +24,7 @@ shiny_symlink <- function(file = NULL, verbose = T){
     file.link(SETUP(), "./shiny/setup.R")
     file.link(LIB(), "./shiny/lib.R")
   } else {
-    link_file <- sprintf("./shiny/%s", str_replace(file,"^(.*[\\/])", ""))
+    link_file <- sprintf("./shiny/%s", stringr::str_replace(file,"^(.*[\\/])", ""))
     waRRior::print_if_verbose(sprintf("Adding Symlink from %s to %s", file, link_file), verbose = verbose)
     file.link(file, link_file)
   }

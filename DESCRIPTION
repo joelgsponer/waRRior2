@@ -20,5 +20,12 @@ Imports:
     RCurl,
     devtools,
     dplyr,
-    stringr
+    stringr,
+    ggplot2,
+    grid,
+    gtable,
+    scales,
+    tibble,
+    tidyr,
+    mice
 Suggests: testthat

@@ -91,4 +91,22 @@ median_noNA_noInf <- function(x){
   res <- dplyr::if_else(res == -Inf | res == Inf, NA_real_, res)
   return(res)
 }
-
+# -----------------------------------------------------------------------------
+#' Sum units
+#' Takes a vector of units and sums them and returns a new unit vector with
+#' the same units.
+#' @param x Unit vector
+#'
+#' @return Sum as a unit
+#' @export
+#'
+#' @examples
+#' library(ggplot2)
+#' x <- unit(c(1,2,3,4), units = "cm")
+#' sum_units(x)
+sum_units <- function(x) {
+  u <- attr(x, "unit")
+  x <- as.numeric(x)
+  x <- sum(x)
+  return(ggplot2::unit(x, units = u))
+}

@@ -75,7 +75,7 @@ project_create <- name <- function(verbose = F, debug = F) {
 project_add_src <- function(name, verbose = F, debug = F){
   write(  x = sprintf("src_%s <- function(verbose = T, debug = F){\n}", name)
         , file = sprintf("./src/%s.R", name))
-  write(x = sprintf("source('./src/%s.R')", name), file = RUN(), append = T)
+  write(x = sprintf("source('./src/%s.R')", name), file = SETUP(), append = T)
   write(x = sprintf("src_%s()", name), file = RUN(), append = T)
 }
 # -----------------------------------------------------------------------------
