@@ -3,13 +3,13 @@
 \name{self_update}
 \alias{self_update}
 \title{Self Update from Github
-Self updates the package}
+Self updates the package, acctually it reinstalls it.}
 \usage{
 self_update()
 }
 \description{
 Self Update from Github
-Self updates the package
+Self updates the package, acctually it reinstalls it.
 }
 \examples{
 self_update()

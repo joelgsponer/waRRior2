@@ -23,7 +23,12 @@ cluster_heatmap <- function(  d
   d <- tidyr::spread(d, key = "key", value = "value")
   d_wide <- dplyr::mutate_at(.tbl = d,.vars = dplyr::vars(-!!"ID"), .funs = list(scales::rescale))
   # Impute
-  d_wide_imputed <- tibble::as_tibble(mice::complete(mice::mice(data = d_wide,method = "pmm", printFlag = F),1))
+  # Return the unaltered tibble if nothing is left to impute (throwed me an error)
+  d_wide_imputed <- tryCatch({
+    tibble::as_tibble(mice::complete(mice::mice(data = d_wide,method = "pmm", printFlag = F),1))
+  }, error = function(e){
+    return(d_wide)
+  })
   # Cluster
   clusters <- stats::kmeans(dplyr::select(d_wide_imputed, -!!"ID"), centers = nClusters)$cluster
   # Combine
@@ -35,7 +40,6 @@ cluster_heatmap <- function(  d
                           , .vars = "ID"
                           , .funs = list(function(x){factor(x, unique(x))})
   )
-
   t <- ggplot2::theme(   axis.text.x = ggplot2::element_text(angle = 90, hjust = 1)
                          , plot.margin = ggplot2::unit(c(2,0,2,0), "cm")
                          , plot.background = ggplot2::element_blank()

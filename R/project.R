@@ -49,6 +49,7 @@ project_setup_files <- name <- function(verbose = F, debug = F) {
   write("# Libraries", LIB())
   # Setup
   write("# Load libraries", SETUP())
+  write("\nsource(LIB())", append = TRUE)
   write("\n", SETUP(), append = TRUE)
   write("# Set seed", SETUP(), append = TRUE)
   write("set.seed(42)", SETUP(), append = TRUE)

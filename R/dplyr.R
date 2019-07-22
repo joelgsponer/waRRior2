@@ -21,3 +21,16 @@ dplyr_summary <- function(data, col_name, verbose = F, debug = F) {
             , Missing = sum(is.na(!!col_name))
   )
 }
+# -----------------------------------------------------------------------------
+#' Title
+#'
+#' @param t
+#'
+#' @return
+#' @export
+#'
+#' @examples
+dplyr_tuple <- function( t )
+{
+  as.list( setNames( t[[2]], t[[1]] ) )
+}

@@ -3,7 +3,7 @@
 #' @description To be uses as a snippet
 #' @param title Section heading
 #' @param description Section description
-#' @param ts Add timestamp of creation (T/F)
+#' @param filling - or + or #
 #' @param verbose For verbose printing
 #' @param debug For debug printing
 #'
@@ -11,20 +11,18 @@
 #' @export
 #'
 #' @examples
-#' snippet_section(title = "1st Chapter",
-#'  description = "Let the saga begin"
-#'  , ts = TRUE, verbose = TRUE)
-snippet_section <- function(title, description, ts, verbose = F, debug = F) {
-  start <- paste(title, "[START]")
-  description <- paste("## ",dplyr::if_else(ts, as.character(Sys.time()), "")," -> ", description)
-  end <- paste(title, "[END]")
-  start <- waRRior::snippet_full_line_title( input = start
-                                         , alignment = 40
-                                         , filling = "-")
-  end <- waRRior::snippet_full_line_title( input = end
-                                             , alignment = 40
-                                             , filling = "-")
-  res <- paste(start,description,"",end, sep = "\n")
+#' snippet_section(
+#'   title = "1st Chapter"
+#' , description = "Let the saga begin"
+#' , verbose = TRUE
+#' , filling = "-"
+#' )
+snippet_section <- function(title, description, verbose = F, debug = F, filling = "-") {
+  description <- paste("#' ", description)
+  start <- waRRior::snippet_full_line_title( input = title
+                                         , alignment = 0
+                                         , filling = filling)
+  res <- paste(start,description,sep = "\n")
   waRRior::print_if_verbose(paste0("\n",res), verbose = verbose)
   return(res)
 }

@@ -4,18 +4,19 @@
 \alias{snippet_section}
 \title{Creates a section}
 \usage{
-snippet_section(title, description, ts, verbose = F, debug = F)
+snippet_section(title, description, verbose = F, debug = F,
+  filling = "-")
 }
 \arguments{
 \item{title}{Section heading}
 
 \item{description}{Section description}
 
-\item{ts}{Add timestamp of creation (T/F)}
-
 \item{verbose}{For verbose printing}
 
 \item{debug}{For debug printing}
+
+\item{filling}{- or + or #}
 }
 \value{
 A section comment
@@ -24,7 +25,10 @@ A section comment
 To be uses as a snippet
 }
 \examples{
-snippet_section(title = "1st Chapter",
- description = "Let the saga begin"
- , ts = TRUE, verbose = TRUE)
+snippet_section(
+  title = "1st Chapter"
+, description = "Let the saga begin"
+, verbose = TRUE
+, filling = "-"
+)
 }
