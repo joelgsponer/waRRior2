@@ -9,3 +9,25 @@ self_update <- function(){
   install_github("joelgsponer/warrior2")
   waRRior::print_if_verbose("Done", T)
 }
+# ---
+#' Refresh
+#'
+#' @return
+#' @export
+#'
+#' @examples
+refresh_warrior <- function(){
+  detach("package:waRRior", unload=TRUE)
+  library(waRRior)
+}
+# ---
+#' Detach
+#'
+#' @return
+#' @export
+#'
+#' @examples
+detach_warrior <- function(){
+  detach("package:waRRior", unload=TRUE)
+}
+

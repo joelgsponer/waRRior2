@@ -4,16 +4,12 @@
 \alias{dplyr_summary}
 \title{Create a summary like dataframe with piping}
 \usage{
-dplyr_summary(data, col_name, verbose = F, debug = F)
+dplyr_summary(data, col)
 }
 \arguments{
 \item{data}{data frame to be summarised}
 
 \item{col_name}{the columns to be included}
-
-\item{verbose}{for verbose printing}
-
-\item{debug}{for debug printing}
 }
 \description{
 Create a summary like dataframe with piping

@@ -25,6 +25,7 @@ google_colors_load <- function(
 #' @param level Choose the level of saturation 1-4
 #' @param shuffle shuffle the colors takes T or F
 #' @param show show plot of the colors
+#' @param distinct select distinct colors
 #'
 #' @return A vector of colors drawn from the google color pallets
 #' @export
@@ -32,13 +33,14 @@ google_colors_load <- function(
 #' @examples
 #' g <- google_colors_accents(level = 1, show = TRUE)
 #' print(g)
-google_colors_accents <- function(level = 4, shuffle = F, show = F){
+google_colors_accents <- function(level = 4, shuffle = F, show = F, distinct = F, n = NA){
   google_colors <- google_colors_load(verbose = F)
   r <- c()
   for(i in seq(1,length(google_colors))){
     r <- c(r, google_colors[[i]]$accent[level])
   }
   if(shuffle) r <- sample(r)
+  if(distinct) r <- r[scales::rescale(seq(1:n), to = c(1,16))]
   if(show){
     graphics::par(mar = c(4,8,4,4))
     graphics::barplot(rep(1,16), col = r, names = paste(seq(1,16), r), las = 2, horiz = T, xaxt = "n")

@@ -2,7 +2,7 @@
 % Please edit documentation in R/viz.R
 \name{cluster_heatmap}
 \alias{cluster_heatmap}
-\title{Create}
+\title{Create clustered Heatmap}
 \usage{
 cluster_heatmap(d, n, colorscheme = c(rev(google_colors$Blue$accent[4]),
   "black", google_colors$Red$accent[4]), square = F, show = T)
@@ -19,7 +19,7 @@ cluster_heatmap(d, n, colorscheme = c(rev(google_colors$Blue$accent[4]),
 \item{show}{Print plot}
 }
 \description{
-Create
+Create clustered Heatmap
 }
 \examples{
 

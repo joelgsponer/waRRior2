@@ -18,42 +18,17 @@
 #' HM <- ComplexHeatmap::draw(HM)  #Show the heatmap
 #' heatmap_extract_cluster(HM, mat, which = "row")
 heatmap_extract_cluster <- function(heatmap_obj, matrix_obj, which = "column"){
-  # Column
-  if(which == "column"){
-    l <- ComplexHeatmap::column_order(heatmap_obj)
-    for (i in 1:length(l)){
-      if (i == 1) {
-        clu <- colnames(matrix_obj[,l[[i]]])
-        out <- cbind(clu, i)
-        colnames(out) <- c("ID", "Cluster")
-      } else {
-        clu <- colnames(matrix_obj[,l[[i]]])
-        clu <- cbind(clu, i)
-        out <- rbind(out, clu)
-      }
-    }
-    out %>%
-      as_tibble() ->
-      out
-    return(out)
-  }
-  # Row
-  if(which == "row"){
-    l <- ComplexHeatmap::row_order(heatmap_obj)
-    for (i in 1:length(l)){
-      if (i == 1) {
-        clu <- rownames(matrix_obj[l[[i]],])
-        out <- cbind(clu, i)
-        colnames(out) <- c("ID", "Cluster")
-      } else {
-        clu <- rownames(matrix_obj[l[[i]],])
-        clu <- cbind(clu, i)
-        out <- rbind(out, clu)
-      }
-    }
-    out %>%
-      as_tibble() ->
-      out
-    return(out)
-  }
+  if(which == "column") c <- ComplexHeatmap::column_order(heatmap_obj)
+  if(which == "row") c <- ComplexHeatmap::row_order(heatmap_obj)
+  n <- names(c)
+  l <- seq(1, length(n), 1)
+  clu <- purrr::map2(c, l, function(x, y){
+    data.frame(x, y)
+  })
+  clu <- dplyr::bind_rows(clu)
+  clu <- dplyr::arrange(clu, x)
+  clu <- dplyr::mutate(clu, y = as.character(y))
+  if(which == "column") r <- tibble::tibble(ID = colnames(matrix_obj), Cluster = clu$y)
+  if(which == "row") r <- tibble::tibble(ID = rownames(matrix_obj), Cluster = clu$y)
+  return(r)
 }

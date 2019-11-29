@@ -27,5 +27,7 @@ Imports:
     scales,
     tibble,
     tidyr,
-    mice
+    mice,
+    survival,
+    infer
 Suggests: testthat

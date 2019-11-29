@@ -34,3 +34,14 @@ print_if_debug <- function(message, object, debug = F){
   }
 }
 # -----------------------------------------------------------------------------
+#' Message glue
+#' Wrapper arount message and glue. Prints in green
+#' @param mes
+#'
+#' @return
+#' @export
+#'
+#' @examples
+message_glue <- function(mes){
+  message(crayon::green(glue::glue(mes)))
+}

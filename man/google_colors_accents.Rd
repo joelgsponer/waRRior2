@@ -4,7 +4,8 @@
 \alias{google_colors_accents}
 \title{Google color accents}
 \usage{
-google_colors_accents(level = 4, shuffle = F, show = F)
+google_colors_accents(level = 4, shuffle = F, show = F,
+  distinct = F, n = NA)
 }
 \arguments{
 \item{level}{Choose the level of saturation 1-4}
@@ -12,6 +13,8 @@ google_colors_accents(level = 4, shuffle = F, show = F)
 \item{shuffle}{shuffle the colors takes T or F}
 
 \item{show}{show plot of the colors}
+
+\item{distinct}{select distinct colors}
 }
 \value{
 A vector of colors drawn from the google color pallets
